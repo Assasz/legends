@@ -1,0 +1,20 @@
+parameters:
+  database_uri: '%env(DATABASE_URI)%'
+  database_name: '%env(key:path:url:DATABASE_URI)%'
+
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+
+  Legends\Game\:
+    resource: '../src/'
+    exclude:
+      - '../src/Kernel.php'
+
+  Legends\Game\Infrastructure\Persistence\DatabaseClient:
+    $databaseUri: '%database_uri%'
+    $databaseName: '%database_name%'
+
+  Legends\Game\Infrastructure\Http\World\MoveToLocation\MoveToLocationAPI:
+    public: true

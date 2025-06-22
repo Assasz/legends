@@ -1,0 +1,43 @@
+version: '3.5'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: .docker/php-fpm/Dockerfile
+    container_name: legends-app
+    volumes:
+      - ./:/app:rw
+    depends_on:
+      - server
+      - database
+    networks:
+      - game
+
+  server:
+    build:
+      context: .
+      dockerfile: .docker/nginx/Dockerfile
+    container_name: legends-server
+    volumes:
+      - ./:/app:rw
+    ports:
+      - "1997:80"
+    networks:
+      - game
+
+  database:
+    image: bitnami/mongodb:5.0.23
+    container_name: legends-database
+    volumes:
+      - mongodb:/bitnami/mongodb
+    ports:
+      - "27019:27017"
+    networks:
+      - game
+
+volumes:
+  mongodb:
+
+networks:
+  game:
