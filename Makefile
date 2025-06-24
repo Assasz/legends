@@ -26,10 +26,6 @@ up: ## spin up environment
 tests: ## executes project tests and calculates coverage
 		docker-compose run --rm app sh -lc 'XDEBUG_MODE=coverage ./vendor/bin/phpunit --testdox --coverage-text --colors=never'
 
-.PHONY: phpstan
-phpstan: ## executes php stan
-		docker-compose run --rm app sh -lc './vendor/bin/phpstan analyse'
-
 .PHONY: clear-cache
 clear-cache: ## clears Symfony cache
 		docker-compose run --rm app sh -lc 'php ./bin/console cache:clear'

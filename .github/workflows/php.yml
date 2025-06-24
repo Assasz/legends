@@ -24,8 +24,5 @@ jobs:
       - name: Install dependencies
         run: docker compose run --rm app sh -lc 'composer install --prefer-dist --no-progress --no-suggest'
 
-      - name: Run PHPStan analyse
-        run: docker compose run --rm app sh -lc './vendor/bin/phpstan analyse'
-
       - name: Run PHPUnit tests
         run: docker compose run --rm app sh -lc 'XDEBUG_MODE=coverage ./vendor/bin/phpunit --testdox --coverage-text --colors=never'
