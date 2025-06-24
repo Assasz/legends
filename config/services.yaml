@@ -16,5 +16,17 @@ services:
     $databaseUri: '%database_uri%'
     $databaseName: '%database_name%'
 
+  Legends\Game\Infrastructure\Exception\ExceptionListener:
+    tags:
+      - { name: kernel.event_listener, event: kernel.exception, priority: 101 }
+
+  Legends\Game\Infrastructure\Http\HttpExceptionListener:
+    tags:
+      - { name: kernel.event_listener, event: kernel.exception, priority: 100 }
+
+  ### > API
+
   Legends\Game\Infrastructure\Http\World\MoveToLocation\MoveToLocationAPI:
     public: true
+
+  ### < API

@@ -8,7 +8,7 @@ use Legends\Game\Domain\Util\DomainException;
 
 final class MoveToLocationException extends DomainException
 {
-    private const string TYPE = 'MoveToLocation';
+    private const string TYPE = 'Move To Location';
 
     public static function insufficientMovePoints(): self
     {
