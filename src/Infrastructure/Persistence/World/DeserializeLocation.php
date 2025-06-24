@@ -30,10 +30,10 @@ final readonly class DeserializeLocation
     private static function validate(array $location): void
     {
         try {
-            ArrayValidator::makeSureValueIsSetUnderKey('id', $location['id']);
-            ArrayValidator::makeSureValueIsSetUnderKey('name', $location['name']);
-            ArrayValidator::makeSureValueIsSetUnderKey('type', $location['type']);
-            ArrayValidator::makeSureValueIsSetUnderKey('entrypoints', $location['entrypoints']);
+            ArrayValidator::makeSureValueIsSetUnderKey('id', $location);
+            ArrayValidator::makeSureValueIsSetUnderKey('name', $location);
+            ArrayValidator::makeSureValueIsSetUnderKey('type', $location);
+            ArrayValidator::makeSureValueIsSetUnderKey('entrypoints', $location);
         } catch (ArrayValidatorException $exception) {
             throw DeserializeException::cannotDeserialize(Location::class, $exception->getMessage());
         }
