@@ -1,5 +1,9 @@
 # Legends
 
+API for RPG game (work in progress)
+
+[OpenAPI](https://github.com/Assasz/legends/tree/master/.misc/openapi/openapi.yml)
+
 ### Installation
 
 Via Composer:
@@ -17,9 +21,8 @@ make up
 make composer-install
 ```
 
-Code validation and tests:
+Running tests:
 ```
-make phpstan
 make tests
 ```
 
