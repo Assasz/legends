@@ -1,4 +1,4 @@
 world_move_to_location:
-  path: /moveToLocation/{locationId}
+  path: /world/moveToLocation/{locationId}
   methods: POST|HEAD|OPTIONS
   controller: Legends\Game\Infrastructure\Http\World\MoveToLocation\MoveToLocationAPI
