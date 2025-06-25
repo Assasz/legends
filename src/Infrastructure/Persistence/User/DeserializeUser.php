@@ -17,14 +17,16 @@ final readonly class DeserializeUser
     {
         self::validate($user);
 
+        $token = $user['token']->getArrayCopy();
+
         return new User(
             new Id($user['id']),
             new Id($user['adventurerId']),
             $user['email'],
             $user['password'],
             new UserToken(
-                $user['token']['value'],
-                \DateTimeImmutable::createFromTimestamp($user['token']['expiresAt']),
+                $token['value'],
+                \DateTimeImmutable::createFromTimestamp($token['expiresAt']),
             ),
         );
     }
@@ -37,8 +39,9 @@ final readonly class DeserializeUser
             ArrayValidator::makeSureValueIsSetUnderKey('email', $user);
             ArrayValidator::makeSureValueIsSetUnderKey('password', $user);
             ArrayValidator::makeSureValueIsSetUnderKey('token', $user);
-            ArrayValidator::makeSureValueIsSetUnderKey('value', $user['token']);
-            ArrayValidator::makeSureValueIsSetUnderKey('expiresAt', $user['token']);
+            $token = $user['token']->getArrayCopy();
+            ArrayValidator::makeSureValueIsSetUnderKey('value', $token);
+            ArrayValidator::makeSureValueIsSetUnderKey('expiresAt', $token);
         } catch (ArrayValidatorException $exception) {
             throw DeserializeException::cannotDeserialize(User::class, $exception->getMessage());
         }

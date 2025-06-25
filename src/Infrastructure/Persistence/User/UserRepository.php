@@ -63,7 +63,7 @@ final readonly class UserRepository
         $this->databaseClient->updateOne(
             self::COLLECTION,
             ['id' =>  (string) $userId],
-            ['token.value' => "$token", 'token.expiresAt' => $token->getExpiresAt()->getTimestamp()],
+            ['$set' => ['token.value' => "$token", 'token.expiresAt' => $token->getExpiresAt()->getTimestamp()]],
         );
     }
 }
