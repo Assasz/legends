@@ -35,6 +35,20 @@ final readonly class LocationRepository implements Contract
         return ($this->deserializeLocation)(current($result));
     }
 
+    public function getByName(string $name): Location
+    {
+        $result = $this->databaseClient->getByQuery(
+            self::COLLECTION,
+            $query = ['name' => $name],
+        );
+
+        if (empty($result)) {
+            throw RepositoryException::notFoundByQuery($query, self::COLLECTION);
+        }
+
+        return ($this->deserializeLocation)(current($result));
+    }
+
     public function persist(Location $location): void
     {
         $this->databaseClient->upsert(

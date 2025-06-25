@@ -26,6 +26,12 @@ services:
 
   ### > API
 
+  Legends\Game\Infrastructure\Http\User\SignUp\SignUpAPI:
+    public: true
+
+  Legends\Game\Infrastructure\Http\User\SignIn\SignInAPI:
+    public: true
+
   Legends\Game\Infrastructure\Http\World\MoveToLocation\MoveToLocationAPI:
     public: true
 

@@ -13,4 +13,9 @@ final class RepositoryException extends \RuntimeException implements Contract
     {
         return new self("Element from collection `$collection` with id `$id` not found.");
     }
+
+    public static function notFoundByQuery(array $query, string $collection): self
+    {
+        return new self("Element from collection `$collection` not found by given query: " . json_encode($query));
+    }
 }

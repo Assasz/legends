@@ -1,3 +1,13 @@
+user_sign_up:
+  path: /user/signUp
+  methods: POST|HEAD|OPTIONS
+  controller: Legends\Game\Infrastructure\Http\User\SignUp\SignUpAPI
+
+user_sign_in:
+  path: /user/signIn
+  methods: POST|HEAD|OPTIONS
+  controller: Legends\Game\Infrastructure\Http\User\SignIn\SignInAPI
+
 world_move_to_location:
   path: /world/moveToLocation/{locationId}
   methods: POST|HEAD|OPTIONS
