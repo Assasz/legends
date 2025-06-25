@@ -30,7 +30,7 @@ final readonly class ExceptionListener
             ),
             $exception instanceof DomainException => new HttpException(
                 $exception->getMessage(),
-                $exception->getType(),
+                $exception->getTitle(),
                 Response::HTTP_UNPROCESSABLE_ENTITY,
             ),
             default => new HttpException(

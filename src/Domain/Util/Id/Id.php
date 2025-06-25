@@ -6,16 +6,16 @@ namespace Legends\Game\Domain\Util\Id;
 
 use Ramsey\Uuid\Uuid;
 
-readonly class Id implements \Stringable
+final readonly class Id implements \Stringable
 {
     public function __construct(
         protected string $id,
     ) {
     }
 
-    public static function new(): static
+    public static function new(): self
     {
-        return new static(Uuid::uuid4()->toString());
+        return new self(Uuid::uuid4()->toString());
     }
 
     public function equals(Id $id): bool

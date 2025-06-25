@@ -8,15 +8,15 @@ use Legends\Game\Domain\Util\DomainException;
 
 final class MoveToLocationException extends DomainException
 {
-    private const string TYPE = 'Move To Location';
+    private const string TITLE = 'Move To Location';
 
     public static function insufficientMovePoints(): self
     {
-        return new self('Insufficient move points', self::TYPE);
+        return new self('Insufficient move points', self::TITLE);
     }
 
     public static function unreachableDestination(string $locationName): self
     {
-        return new self("Destination `$locationName` is unreachable", self::TYPE);
+        return new self("Destination `$locationName` is unreachable", self::TITLE);
     }
 }

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Legends\Game\Infrastructure\Persistence\Adventurer;
+namespace Legends\Game\Infrastructure\Persistence\Adventurer\Mount;
 
-use Legends\Game\Application\Adventurer\MountRepository as Contract;
-use Legends\Game\Domain\Adventurer\Mount;
+use Legends\Game\Application\Adventurer\Mount\MountRepository as Contract;
+use Legends\Game\Domain\Adventurer\Mount\Mount;
 use Legends\Game\Domain\Util\Id\Id;
 use Legends\Game\Infrastructure\Persistence\DatabaseClient;
 use Legends\Game\Infrastructure\Persistence\RepositoryException;

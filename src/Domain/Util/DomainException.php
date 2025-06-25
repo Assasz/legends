@@ -8,13 +8,13 @@ abstract class DomainException extends \DomainException
 {
     public function __construct(
         string $message,
-        protected readonly string $type,
+        protected readonly string $title,
     ) {
         parent::__construct($message);
     }
 
-    public function getType(): string
+    public function getTitle(): string
     {
-        return $this->type;
+        return $this->title;
     }
 }

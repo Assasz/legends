@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Legends\Game\Infrastructure\Persistence\World;
 
-use Legends\Game\Domain\Adventurer\Mount;
 use Legends\Game\Domain\Util\ArrayValidator\ArrayValidator;
 use Legends\Game\Domain\Util\ArrayValidator\ArrayValidatorException;
 use Legends\Game\Domain\Util\Id\Id;
@@ -12,6 +11,7 @@ use Legends\Game\Domain\Util\Id\IdCollection;
 use Legends\Game\Domain\World\Location;
 use Legends\Game\Domain\World\LocationType;
 use Legends\Game\Infrastructure\Persistence\DeserializeException;
+use function Lambdish\Phunctional\map;
 
 final readonly class DeserializeLocation
 {
@@ -23,7 +23,7 @@ final readonly class DeserializeLocation
             new Id($location['id']),
             $location['name'],
             LocationType::from($location['type']),
-            new IdCollection(array_map(static fn(string $id): Id => new Id($id), $location['entrypoints'])),
+            new IdCollection(map(static fn(string $id): Id => new Id($id), $location['entrypoints'])),
         );
     }
 

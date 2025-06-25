@@ -6,10 +6,10 @@ namespace Legends\Game\Domain\Inventory\Equipment\Charm;
 
 use Legends\Game\Domain\Inventory\InventoryItem;
 
-abstract readonly class Charm implements InventoryItem
+final readonly class Charm implements InventoryItem
 {
     public function __construct(
-        protected string $name,
+        private string $name,
     ) {
     }
 

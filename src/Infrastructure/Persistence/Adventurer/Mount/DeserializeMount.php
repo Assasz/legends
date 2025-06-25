@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Legends\Game\Infrastructure\Persistence\Adventurer;
+namespace Legends\Game\Infrastructure\Persistence\Adventurer\Mount;
 
-use Legends\Game\Domain\Adventurer\Mount;
+use Legends\Game\Domain\Adventurer\Mount\Mount;
 use Legends\Game\Domain\Util\ArrayValidator\ArrayValidator;
 use Legends\Game\Domain\Util\ArrayValidator\ArrayValidatorException;
 use Legends\Game\Domain\Util\Id\Id;

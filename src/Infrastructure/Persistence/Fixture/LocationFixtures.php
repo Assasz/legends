@@ -9,7 +9,7 @@ use Legends\Game\Domain\Util\Id\IdCollection;
 use Legends\Game\Domain\World\Location;
 use Legends\Game\Domain\World\LocationType;
 
-final readonly class LocationFixture
+final readonly class LocationFixtures
 {
     public static function yield(): array
     {
