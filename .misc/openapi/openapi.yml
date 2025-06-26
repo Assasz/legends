@@ -93,12 +93,14 @@ components:
           example: '12345678'
 
     SignIn:
-      email:
-        type: string
-        example: 'john@doe.com'
-      password:
-        type: string
-        example: '12345678'
+      type: object
+      properties:
+        email:
+          type: string
+          example: 'john@doe.com'
+        password:
+          type: string
+          example: '12345678'
 
   responses:
     UserToken:
