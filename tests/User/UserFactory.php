@@ -12,6 +12,7 @@ use Legends\Game\Infrastructure\User\UserToken;
 final readonly class UserFactory
 {
     public static function create(
+        ?Id $adventurerId = null,
         ?string $email = null,
         ?string $password = null,
         ?UserToken $token = null,
@@ -20,7 +21,7 @@ final readonly class UserFactory
 
         return new User(
             Id::new(),
-            Id::new(),
+            $adventurerId ?? Id::new(),
             $email ?? $faker->email,
             password_hash($password ?? $faker->password, PASSWORD_BCRYPT),
             $token ?? UserToken::new(),

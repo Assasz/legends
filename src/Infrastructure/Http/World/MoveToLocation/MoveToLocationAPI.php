@@ -6,7 +6,7 @@ namespace Legends\Game\Infrastructure\Http\World\MoveToLocation;
 
 use Legends\Game\Application\World\MoveToLocation\MoveToLocation;
 use Legends\Game\Domain\Util\Id\Id;
-use Legends\Game\Infrastructure\Http\DataResponse;
+use Legends\Game\Infrastructure\Http\NoContentResponse;
 use Legends\Game\Infrastructure\User\GetUserFromRequest;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -18,13 +18,13 @@ final readonly class MoveToLocationAPI
     ) {
     }
 
-    public function __invoke(Request $request, string $locationId): DataResponse
+    public function __invoke(Request $request, string $locationId): NoContentResponse
     {
         $user = ($this->getUserFromRequest)($request);
         $locationId = new Id($locationId);
 
         ($this->moveToLocation)($user->getAdventurerId(), $locationId);
 
-        return new DataResponse(['newLocationId' => "$locationId"]);
+        return new NoContentResponse();
     }
 }

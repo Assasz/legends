@@ -54,6 +54,23 @@ paths:
         "200":
           $ref: '#/components/responses/UserInfo'
 
+  /world/moveToLocation/{locationId}:
+    post:
+      tags:
+        - World
+      summary: Moves adventurer to given location.
+      parameters:
+        - in: path
+          name: locationId
+          schema:
+            type: string
+          required: true
+      responses:
+        "204":
+          description: Adventurer moved.
+        "422":
+          description: Insufficient move points or unreachable destination.
+
 components:
   securitySchemes:
     ApiToken:
