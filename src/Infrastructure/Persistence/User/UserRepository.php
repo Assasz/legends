@@ -21,11 +21,11 @@ final readonly class UserRepository
     ) {
     }
 
-    public function getByToken(Id $token): User
+    public function getByToken(string $token): User
     {
         $result = $this->databaseClient->getByQuery(
             self::COLLECTION,
-            $query = ['token' => "$token"],
+            $query = ['token.value' => $token],
         );
 
         if (empty($result)) {

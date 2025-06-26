@@ -18,7 +18,7 @@ final class DeserializeAdventurer
         self::validate($adventurer);
 
         return new Adventurer(
-            $adventurer['id'],
+            new Id($adventurer['id']),
             $adventurer['name'],
             new IntegerValue($adventurer['level']),
             new IntegerValue($adventurer['movePoints']),

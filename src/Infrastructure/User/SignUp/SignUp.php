@@ -15,7 +15,7 @@ use Legends\Game\Infrastructure\User\UserToken;
 
 final readonly class SignUp
 {
-    private const string STARTING_LOCATION = 'Hunters Camp';
+    public const string STARTING_LOCATION = 'Hunters Camp';
 
     public function __construct(
         private LocationRepository $locationRepository,
@@ -26,6 +26,10 @@ final readonly class SignUp
 
     public function __invoke(string $adventurerName, string $email, #[\SensitiveParameter] string $password): User
     {
+        if (strlen($password) < 8) {
+            throw SignUpException::passwordTooShort();
+        }
+
         $this->adventurerRepository->persist(new Adventurer(
             $adventurerId = Id::new(),
             $adventurerName,

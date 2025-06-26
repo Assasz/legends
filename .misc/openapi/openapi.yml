@@ -9,7 +9,50 @@ security:
   - ApiToken: []
 
 paths:
-  # @todo
+  /user/signUp:
+    post:
+      tags:
+        - User
+      summary: Signs up a new user.
+      security: [ ]
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SignUp'
+      responses:
+        "201":
+          $ref: '#/components/responses/UserToken'
+        "422":
+          description: Validation failed.
+
+  /user/signIn:
+    post:
+      tags:
+        - User
+      summary: Signs in user refreshing his token.
+      security: [ ]
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SignIn'
+      responses:
+        "200":
+          $ref: '#/components/responses/UserToken'
+        "401":
+          description: Invalid password.
+        "404":
+          description: User not found.
+
+  /user/getInfo:
+    get:
+      tags:
+        - User
+      summary: Returns info about authenticated user.
+      responses:
+        "200":
+          $ref: '#/components/responses/UserInfo'
 
 components:
   securitySchemes:
@@ -17,3 +60,62 @@ components:
       type: apiKey
       in: header
       name: X-Authorization
+
+  schemas:
+    SignUp:
+      type: object
+      properties:
+        adventurerName:
+          type: string
+          example: 'John'
+        email:
+          type: string
+          example: 'john@doe.com'
+        password:
+          type: string
+          example: '12345678'
+
+    SignIn:
+      email:
+        type: string
+        example: 'john@doe.com'
+      password:
+        type: string
+        example: '12345678'
+
+  responses:
+    UserToken:
+      description: User token.
+      content:
+        application/vnd.api+json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: object
+                properties:
+                  token:
+                    type: string
+                    example: 'e9c1879e-17ca-418d-9d7f-0f0b291464a1'
+
+    UserInfo:
+      description: User info.
+      content:
+        application/vnd.api+json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    example: 'e9c1879e-17ca-418d-9d7f-0f0b291464a1'
+                  adventurerId:
+                    type: string
+                    example: 'e9c1879e-17ca-418d-9d7f-0f0b291464a1'
+                  email:
+                    type: string
+                    example: 'john@doe.com'
+
+

@@ -32,6 +32,9 @@ services:
   Legends\Game\Infrastructure\Http\User\SignIn\SignInAPI:
     public: true
 
+  Legends\Game\Infrastructure\Http\User\GetInfo\GetInfoAPI:
+    public: true
+
   Legends\Game\Infrastructure\Http\World\MoveToLocation\MoveToLocationAPI:
     public: true
 

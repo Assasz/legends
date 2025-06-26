@@ -7,7 +7,6 @@ namespace Legends\Game\Infrastructure\Http\User\SignUp;
 use Legends\Game\Infrastructure\Http\DataResponse;
 use Legends\Game\Infrastructure\User\SignUp\SignUp;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Attribute\MapRequestPayload;
 
 final readonly class SignUpAPI
 {
@@ -16,7 +15,7 @@ final readonly class SignUpAPI
     ) {
     }
 
-    public function __invoke(#[MapRequestPayload] SignUpRequest $request): DataResponse
+    public function __invoke(SignUpRequest $request): DataResponse
     {
         $user = ($this->signUp)($request->getAdventurerName(), $request->getEmail(), $request->getPassword());
 

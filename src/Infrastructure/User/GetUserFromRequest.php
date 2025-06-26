@@ -26,7 +26,7 @@ final readonly class GetUserFromRequest
         }
 
         try {
-            $user = $this->userRepository->getByToken($token = new Id($token));
+            $user = $this->userRepository->getByToken($token);
         } catch (RepositoryException) {
             throw UserException::invalidToken($token);
         }

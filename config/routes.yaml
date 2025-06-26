@@ -8,6 +8,11 @@ user_sign_in:
   methods: POST|HEAD|OPTIONS
   controller: Legends\Game\Infrastructure\Http\User\SignIn\SignInAPI
 
+user_get_info:
+  path: /user/getInfo
+  methods: GET|HEAD|OPTIONS
+  controller: Legends\Game\Infrastructure\Http\User\GetInfo\GetInfoAPI
+
 world_move_to_location:
   path: /world/moveToLocation/{locationId}
   methods: POST|HEAD|OPTIONS
