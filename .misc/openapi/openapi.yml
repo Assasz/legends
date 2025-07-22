@@ -85,6 +85,9 @@ components:
         adventurerName:
           type: string
           example: 'John'
+        adventurerAvatar:
+          type: string
+          example: 'avatar_1'
         email:
           type: string
           example: 'john@doe.com'

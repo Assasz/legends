@@ -13,6 +13,7 @@ final readonly class SerializeAdventurer
         return [
             'id' => (string) $adventurer->getId(),
             'name' => $adventurer->getName(),
+            'avatar' => $adventurer->getAvatar()->value,
             'level' => $adventurer->getLevel()->get(),
             'movePoints' => $adventurer->getMovePoints()->get(),
             'maximumMovePoints' => $adventurer->getMaximumMovePoints()->get(),

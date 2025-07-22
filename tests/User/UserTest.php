@@ -29,6 +29,7 @@ final class UserTest extends LegendsApiTestCase
 
         $response = $this->makeRequest('POST', '/user/signUp', json_encode([
             'adventurerName' => $adventurerName = 'John',
+            'adventurerAvatar' => 'avatar_1',
             'email' => 'john@doe.com',
             'password' => '12345678',
         ]));
@@ -54,6 +55,7 @@ final class UserTest extends LegendsApiTestCase
     {
         $response = $this->makeRequest('POST', '/user/signUp', json_encode([
             'adventurerName' => 'John',
+            'adventurerAvatar' => 'avatar_1.png',
             'email' => 'john@doe.com',
             'password' => '1234567',
         ]));

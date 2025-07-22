@@ -8,6 +8,7 @@ final readonly class SignUpRequest
 {
     public function __construct(
         private string $adventurerName,
+        private string $adventurerAvatar,
         private string $email,
         #[\SensitiveParameter] private string $password,
     ) {
@@ -16,6 +17,11 @@ final readonly class SignUpRequest
     public function getAdventurerName(): string
     {
         return $this->adventurerName;
+    }
+
+    public function getAdventurerAvatar(): string
+    {
+        return $this->adventurerAvatar;
     }
 
     public function getEmail(): string

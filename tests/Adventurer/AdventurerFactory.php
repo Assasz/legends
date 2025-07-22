@@ -6,6 +6,7 @@ namespace Legends\Game\Tests\Adventurer;
 
 use Faker\Factory;
 use Legends\Game\Domain\Adventurer\Adventurer;
+use Legends\Game\Domain\Adventurer\Avatar;
 use Legends\Game\Domain\Util\Id\Id;
 use Legends\Game\Domain\Util\IntegerValue\IntegerValue;
 
@@ -20,6 +21,7 @@ final readonly class AdventurerFactory
         return new Adventurer(
             Id::new(),
             $faker->name,
+            Avatar::AVATAR_1,
             new IntegerValue(1),
             $movePoints ?? new IntegerValue(1),
             new IntegerValue(1),

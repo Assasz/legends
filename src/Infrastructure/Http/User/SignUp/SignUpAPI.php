@@ -17,7 +17,12 @@ final readonly class SignUpAPI
 
     public function __invoke(SignUpRequest $request): DataResponse
     {
-        $user = ($this->signUp)($request->getAdventurerName(), $request->getEmail(), $request->getPassword());
+        $user = ($this->signUp)(
+            $request->getAdventurerName(),
+            $request->getAdventurerAvatar(),
+            $request->getEmail(),
+            $request->getPassword(),
+        );
 
         return new DataResponse(['token' => (string) $user->getToken()], Response::HTTP_CREATED);
     }

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Legends\Game\Infrastructure\User\SignUp;
 
 use Legends\Game\Domain\Adventurer\Adventurer;
+use Legends\Game\Domain\Adventurer\Avatar;
 use Legends\Game\Domain\Util\Id\Id;
 use Legends\Game\Domain\Util\IntegerValue\IntegerValue;
 use Legends\Game\Infrastructure\Persistence\Adventurer\AdventurerRepository;
@@ -24,8 +25,12 @@ final readonly class SignUp
     ) {
     }
 
-    public function __invoke(string $adventurerName, string $email, #[\SensitiveParameter] string $password): User
-    {
+    public function __invoke(
+        string $adventurerName,
+        string $adventurerAvatar,
+        string $email,
+        #[\SensitiveParameter] string $password
+    ): User {
         if (strlen($password) < 8) {
             throw SignUpException::passwordTooShort();
         }
@@ -33,6 +38,7 @@ final readonly class SignUp
         $this->adventurerRepository->persist(new Adventurer(
             $adventurerId = Id::new(),
             $adventurerName,
+            Avatar::from($adventurerAvatar),
             new IntegerValue(1),
             new IntegerValue(1),
             new IntegerValue(1),

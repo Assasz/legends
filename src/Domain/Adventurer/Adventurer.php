@@ -14,6 +14,7 @@ final class Adventurer implements \Stringable
     public function __construct(
         private Id $id,
         private string $name,
+        private Avatar $avatar,
         private IntegerValue $level,
 //        private array $party,
         private IntegerValue $movePoints,
@@ -39,6 +40,11 @@ final class Adventurer implements \Stringable
     public function getName(): string
     {
         return $this->name;
+    }
+
+    public function getAvatar(): Avatar
+    {
+        return $this->avatar;
     }
 
     /**
