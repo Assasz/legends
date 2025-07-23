@@ -62,7 +62,7 @@ final class Adventurer implements \Stringable
 
     public function gainExperience(Experience $experience): void
     {
-        $this->experience = $experience;
+        $this->experience->increaseBy($experience);
 
         if ($this->level->calculateExperienceNeededForNextLevel()->isLowerThan($this->experience)) {
             $this->levelUp();
