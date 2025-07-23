@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Legends\Game\Infrastructure\User\SignUp;
 
 use Legends\Game\Domain\Adventurer\Adventurer;
+use Legends\Game\Domain\Adventurer\Attribute\Experience;
+use Legends\Game\Domain\Adventurer\Attribute\Level;
 use Legends\Game\Domain\Adventurer\Avatar;
 use Legends\Game\Domain\Util\Id\Id;
 use Legends\Game\Domain\Util\IntegerValue\IntegerValue;
@@ -39,7 +41,8 @@ final readonly class SignUp
             $adventurerId = Id::new(),
             $adventurerName,
             Avatar::from($adventurerAvatar),
-            new IntegerValue(1),
+            new Level(1),
+            new Experience(0),
             new IntegerValue(1),
             new IntegerValue(1),
             null,

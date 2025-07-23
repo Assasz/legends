@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Legends\Game\Domain\Adventurer;
 
+use Legends\Game\Domain\Adventurer\Attribute\Experience;
+use Legends\Game\Domain\Adventurer\Attribute\Level;
 use Legends\Game\Domain\Inventory\Equipment\Equipment;
 use Legends\Game\Domain\Inventory\Inventory;
 use Legends\Game\Domain\Util\Id\Id;
@@ -15,7 +17,8 @@ final class Adventurer implements \Stringable
         private Id $id,
         private string $name,
         private Avatar $avatar,
-        private IntegerValue $level,
+        private Level $level,
+        private Experience $experience,
 //        private array $party,
         private IntegerValue $movePoints,
         private IntegerValue $maximumMovePoints,
@@ -47,12 +50,28 @@ final class Adventurer implements \Stringable
         return $this->avatar;
     }
 
-    /**
-     * @return IntegerValue
-     */
-    public function getLevel(): IntegerValue
+    public function getLevel(): Level
     {
         return $this->level;
+    }
+
+    public function getExperience(): Experience
+    {
+        return $this->experience;
+    }
+
+    public function gainExperience(Experience $experience): void
+    {
+        $this->experience = $experience;
+
+        if ($this->level->calculateExperienceNeededForNextLevel()->isLowerThan($this->experience)) {
+            $this->levelUp();
+        }
+    }
+
+    private function levelUp(): void
+    {
+        $this->level->increment();
     }
 
     public function getMovePoints(): IntegerValue

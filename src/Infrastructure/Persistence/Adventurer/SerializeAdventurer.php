@@ -15,6 +15,7 @@ final readonly class SerializeAdventurer
             'name' => $adventurer->getName(),
             'avatar' => $adventurer->getAvatar()->value,
             'level' => $adventurer->getLevel()->get(),
+            'experience' => $adventurer->getExperience()->get(),
             'movePoints' => $adventurer->getMovePoints()->get(),
             'maximumMovePoints' => $adventurer->getMaximumMovePoints()->get(),
             'mountId' => $adventurer->getMountId() ? (string) $adventurer->getMountId() : null,

@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Legends\Game\Infrastructure\Persistence\Adventurer;
 
 use Legends\Game\Domain\Adventurer\Adventurer;
+use Legends\Game\Domain\Adventurer\Attribute\Experience;
+use Legends\Game\Domain\Adventurer\Attribute\Level;
 use Legends\Game\Domain\Adventurer\Avatar;
 use Legends\Game\Domain\Util\ArrayValidator\ArrayValidator;
 use Legends\Game\Domain\Util\ArrayValidator\ArrayValidatorException;
@@ -22,7 +24,8 @@ final class DeserializeAdventurer
             new Id($adventurer['id']),
             $adventurer['name'],
             Avatar::from($adventurer['avatar']),
-            new IntegerValue($adventurer['level']),
+            new Level($adventurer['level']),
+            new Experience($adventurer['experience']),
             new IntegerValue($adventurer['movePoints']),
             new IntegerValue($adventurer['maximumMovePoints']),
             $adventurer['mountId'] ? new Id($adventurer['mountId']) : null,
@@ -37,6 +40,7 @@ final class DeserializeAdventurer
             ArrayValidator::makeSureValueIsSetUnderKey('name', $adventurer);
             ArrayValidator::makeSureValueIsSetUnderKey('avatar', $adventurer);
             ArrayValidator::makeSureValueIsSetUnderKey('level', $adventurer);
+            ArrayValidator::makeSureValueIsSetUnderKey('experience', $adventurer);
             ArrayValidator::makeSureValueIsSetUnderKey('movePoints', $adventurer);
             ArrayValidator::makeSureValueIsSetUnderKey('maximumMovePoints', $adventurer);
             ArrayValidator::makeSureKeyIsSet('mountId', $adventurer);
